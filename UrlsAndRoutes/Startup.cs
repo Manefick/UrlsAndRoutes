@@ -25,6 +25,19 @@ namespace UrlsAndRoutes
             app.UseStatusCodePages();
             app.UseStaticFiles();
             app.UseMvc();
+            app.UseMvc(routes =>
+            {
+                //Стандартный шаблон который указывает что если в URL не указан action то он устанавлеваеться в Index
+                //routes.MapRoute(name: "default", template: "{controller}/{action}", defaults:new { action = "Index"});
+                //шаблон который обрабатывает статический ЮРЛ вида :"Shop/OldAction"
+                routes.MapRoute(name: "ShopScema2", template: "Shop/OldAction", defaults: new { controller = "Customer", action = "Index" });
+                //УРЛ вида Public/Home/Index  со статическим елементом "Public", применяеться шаблон вида:
+                routes.MapRoute(name: "default", template: "Public/{controller=Admin}/{action=Index}");
+                //ещеодин вариан со статическим елементом URL: Xhome/index будет обработом шаблоном:
+                routes.MapRoute(name: "", template: "X{controller}/{action}");
+                //второй способ задать стандартные значения controller and action
+                routes.MapRoute(name: "", template: "{controller=Home}/{action=Index}");
+            });
         }
     }
 }
