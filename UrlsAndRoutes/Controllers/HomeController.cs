@@ -13,5 +13,19 @@ namespace UrlsAndRoutes.Controllers
         {
             return View("Result", new Result { Controller = nameof(HomeController), Action = nameof(Index)});
         }
+        //использование  значений сегментов ЮРЛ а именно id
+        public ViewResult CustomVariable()
+        {
+            Result r = new Result { Controller = nameof(HomeController), Action = nameof(CustomVariable) };
+            r.Data["Id"] = RouteData.Values["id"] ?? "Nullina";
+            return View("Result", r);
+        }
+        //второй вариант использование переменной URl
+        //public ViewResult CustomVariable(string Id)
+        //{
+        //    Result r = new Result { Controller = nameof(HomeController), Action = nameof(CustomVariable) };
+        //    r.Data["Id"] = Id;
+        //    return View("Result", r);
+        //}
     }
 }
