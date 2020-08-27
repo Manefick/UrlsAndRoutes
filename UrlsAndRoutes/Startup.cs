@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using UrlsAndRoutes.Infrastructure;
 
 namespace UrlsAndRoutes
 {
@@ -44,6 +45,10 @@ namespace UrlsAndRoutes
                 //нужно добавить * и имя например *catrhAll
                 //routes.MapRoute(name: "MyRoute", template: "{controller=Home}/{action=Index}/{id?}/{*catchAll}");
 
+                routes.Routes.Add(new LegacyRoute(
+                    app.ApplicationServices,
+                    "/articles/Windows_3.1_Overview.html",
+                    "/old/.NET_1.0_Class_Library"));
                 routes.MapRoute(name: "out", template: "outbount/{controller=Home}/{action=Index}");
                 routes.MapRoute(name: "first", template: "New/Name{action}", defaults: new { controller = "Home" });
                 routes.MapRoute(name: "default", template: "{controller=Home}/{action=Index}/{id?}");

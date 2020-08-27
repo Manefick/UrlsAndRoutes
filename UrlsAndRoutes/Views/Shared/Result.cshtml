@@ -20,9 +20,16 @@
     @*<a asp-action="CustomVariable">This is an outgoing URL</a>*@
     @* перенаправление на контроллер admin и действие Index, передача параметров осуществляеться с помощью route, example route-id  *@
     <a asp-controller="Admin" asp-action="Index" asp-route-id="Hello">This is an outgoing URL</a>
-    <a asp-controller="Home" asp-action="CustomVariable">This is an outgoing URL</a>
+    <a asp-controller="Home" asp-action="CustomVariable">This is an outgoing URL Custom Variable</a>
     @* asp-route указывает что названия шаблона маршрута должно быть out *@
     <a asp-route="out"> URL</a>
 
+    @*генерация ЮРЛ без ссылки
+        <p>URL: @Url.Action("CustomVariable", "Home", new {id = 100 })</p>*@
+
+    <a asp-route-legacyurl="/articles/Windows_3.1_Overview.html"
+       class="btn btn-primary">
+        This is an outgoing URL
+    </a>
 </body>
 </html>

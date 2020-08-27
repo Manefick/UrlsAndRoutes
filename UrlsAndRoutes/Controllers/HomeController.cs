@@ -18,6 +18,8 @@ namespace UrlsAndRoutes.Controllers
         {
             Result r = new Result { Controller = nameof(HomeController), Action = nameof(CustomVariable) };
             r.Data["Id"] = RouteData.Values["id"] ?? "Nullina";
+            //Генерация урл без ссылок
+            r.Data["url"] = Url.Action("CustomVariable", "Home", new { id = 100 });
             return View("Result", r);
         }
         //второй вариант использование переменной URl
