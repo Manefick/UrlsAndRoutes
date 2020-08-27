@@ -11,10 +11,18 @@
     <table class="table table-bordered table-striped table-sm">
         <tr><th>Controller:</th><td>@Model.Controller</td></tr>
         <tr><th>Action:</th><td>@Model.Action</td></tr>
-        @foreach(string key in Model.Data.Keys)
+        @foreach (string key in Model.Data.Keys)
         {
             <tr><th>@key</th><td>@Model.Data[key]</td></tr>
         }
     </table>
+    @*перенаправляем на действие (action) : CustomVariable*@
+    @*<a asp-action="CustomVariable">This is an outgoing URL</a>*@
+    @* перенаправление на контроллер admin и действие Index, передача параметров осуществляеться с помощью route, example route-id  *@
+    <a asp-controller="Admin" asp-action="Index" asp-route-id="Hello">This is an outgoing URL</a>
+    <a asp-controller="Home" asp-action="CustomVariable">This is an outgoing URL</a>
+    @* asp-route указывает что названия шаблона маршрута должно быть out *@
+    <a asp-route="out"> URL</a>
+
 </body>
 </html>

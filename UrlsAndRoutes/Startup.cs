@@ -42,8 +42,11 @@ namespace UrlsAndRoutes
                 //routes.MapRoute(name: "MyRoute", template: "{controller=Home}/{action=Index}/{id=DefaultId}");
                 //необезательный сегмент ЮРЛ обозначаеться именем и ?, что бы ЮРЛ был не фиксированой длины(к-ва сегментов)
                 //нужно добавить * и имя например *catrhAll
-                routes.MapRoute(name: "MyRoute", template: "{controller=Home}/{action=Index}/{id?}/{*catchAll}");
+                //routes.MapRoute(name: "MyRoute", template: "{controller=Home}/{action=Index}/{id?}/{*catchAll}");
 
+                routes.MapRoute(name: "out", template: "outbount/{controller=Home}/{action=Index}");
+                routes.MapRoute(name: "first", template: "New/Name{action}", defaults: new { controller = "Home" });
+                routes.MapRoute(name: "default", template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
