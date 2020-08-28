@@ -45,6 +45,7 @@ namespace UrlsAndRoutes
                 //нужно добавить * и имя например *catrhAll
                 //routes.MapRoute(name: "MyRoute", template: "{controller=Home}/{action=Index}/{id?}/{*catchAll}");
 
+                routes.MapRoute(name: "areas", template: "{area:exists}/{controller=Home}/{action=Index}");
                 routes.Routes.Add(new LegacyRoute(
                     app.ApplicationServices,
                     "/articles/Windows_3.1_Overview.html",
